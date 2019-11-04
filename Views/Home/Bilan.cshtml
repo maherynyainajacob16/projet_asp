@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ProjetAsp.Models.ChiffreAffaire>
+@{
+    ViewBag.Title = "Bilan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title: {
+                text: "Chiffre d'affaire par Client"
+            },
+            exportFileName: "Pie Chart",
+            exportEnabled: true,
+            animationEnabled: true,
+            legend: {
+                verticalAlign: "bottom",
+                horizontalAlign: "center"
+            },
+            data: [
+            {
+                type: "pie",
+                showInLegend: true,
+                toolTipContent: "{legendText}: <strong>{y}%</strong>",
+                indexLabel: "{label} {y}%",
+                dataPoints: [
+
+                    @foreach (var x in Model)
+                    {
+                       // x.percent /Model.Sum(m=>m.ChiffreAF);
+                        var number = Convert.ToDouble(x.percent);
+                        var total = Convert.ToDouble(Model.Sum(m => m.ChiffreAF));
+
+                        var percent =Math.Round(number/total );
+                        <text>
+                            { y: @percent, legendText: "@x.nom", label: "@x.nom" },
+                        </text>
+                    }
+                ]
+            }
+            ]
+        });
+        chart.render();
+    });
+</script>
+<h2>Bilan</h2><br />
+<div class="row">
+    <div class="col col-sm-4">
+        @using (Html.BeginForm())
+        {
+            <label>Année:</label>@Html.TextBox("an")
+            <button type="submit" class="btn btn-secondary"> Search</button>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col col-sm-4">
+        <table style="text-align: center;" class="table table-light table-bordered">
+            <thead>
+                <tr>
+                    <th>Numéro du client</th>
+                    <th>Nom du client</th>
+                    <th>Chiffre d'affaires</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.num)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChiffreAF)
+                        </td>
+                    </tr>
+                }
+                <tr>
+
+                    <td></td>
+                    <td>
+                        TOTAL
+                    </td>
+                    <td>
+                        @Model.Sum(m => m.ChiffreAF) Ar
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col col-sm-6">
+        <p>Pie Chart</p>
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Etat des stock";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<ProjetAsp.Models.Etat_Stock>
+
+<h1> Etat du stock</h1>
+<div class="row">
+    <div class="col col-sm-4 ">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) 
+        @using (Html.BeginForm(new {@class = "form-horizontal", role = "form-control"}))
+        {
+
+            <div class="form-group">
+                <label>Numéro du Produit:</label>@Html.TextBox("num")
+            </div>
+
+            <div class="form-group ">
+                <label>Date Entre:</label>@Html.TextBox("date1")
+                <label>et </label>@Html.TextBox("date2")
+                <button type="submit" class="btn btn-secondary"> Search</button>
+            </div>
+
+
+        }
+    </div>
+    <div class="nav navbar-right">
+        <form class="form-inline">
+            <label>Desing :</label>
+            <input type="text" class="form-control" value="@ViewBag.Categorie" readonly>
+        </form>
+
+        <form class="form-inline">
+            <label>Etat actuel :</label>
+            <input type="text" class="form-control" value="@ViewBag.etat" readonly>
+        </form>
+    </div>
+</div>
+
+<table id="Facture" style="text-align: center;" class="table table-light table-bordered">
+    <thead>
+    <tr>
+        <th>Client</th>
+        <th>Quantité</th>
+        <th>Date de commande</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QTE)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.date_vente)
+        </tr>
+    }
+    </tbody>
+</table>
+
+

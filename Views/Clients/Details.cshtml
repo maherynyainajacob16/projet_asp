@@ -1,0 +1,35 @@
+﻿@model ProjetAsp.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomClient)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NumClient }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DataCommModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="NumClient" />
+          </Key>
+          <Property Name="NumClient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomClient" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="NumClient" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumProduit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qte" Type="int" />
+          <Property Name="DateCommande" Type="date" />
+          <Property Name="IdCommande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="NumProduit" />
+          </Key>
+          <Property Name="NumProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Desing" Type="nvarchar" MaxLength="50" />
+          <Property Name="PU" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="stock" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DataCommModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataCommModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="NumClient" />
+          </Key>
+          <Property Name="NumClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="NumClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qte" Type="Int32" />
+          <Property Name="DateCommande" Type="DateTime" Precision="0" />
+          <Property Name="IdCommande" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="NumProduit" />
+          </Key>
+          <Property Name="NumProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Desing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PU" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="stock" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DataCommEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Commande" EntityType="Self.Commande" />
+          <EntitySet Name="Produit" EntityType="Self.Produit" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataCommModelStoreContainer" CdmEntityContainer="DataCommEntities4">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="DataCommModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commande">
+            <EntityTypeMapping TypeName="DataCommModel.Commande">
+              <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+                <ScalarProperty Name="NumProduit" ColumnName="NumProduit" />
+                <ScalarProperty Name="Qte" ColumnName="Qte" />
+                <ScalarProperty Name="DateCommande" ColumnName="DateCommande" />
+                <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produit">
+            <EntityTypeMapping TypeName="DataCommModel.Produit">
+              <MappingFragment StoreEntitySet="Produit">
+                <ScalarProperty Name="NumProduit" ColumnName="NumProduit" />
+                <ScalarProperty Name="Desing" ColumnName="Desing" />
+                <ScalarProperty Name="PU" ColumnName="PU" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

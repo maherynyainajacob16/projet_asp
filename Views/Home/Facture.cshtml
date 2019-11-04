@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Edition d'une Facture";
+}
+@model IEnumerable<ProjetAsp.Models.facture>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="row">
+    <div class="nav navbar-header navba-left">
+        <form class="form-inline">
+            <label for="facture">Facture Numéro :</label>
+            <input type="text" class="form-control" id="facture">
+        </form>
+        <form class="form-inline">
+            <label for="date">Date de Facture :</label>
+            <input type="date" class="form-control" id="date">
+        </form>
+        @using (Html.BeginForm())
+        {
+            <label>Numéro du Client:</label>@Html.TextBox("num_client")
+            <button type="submit" class="btn btn-secondary"> Search</button>
+        }
+    </div>
+    <div class="navbar-right">
+        
+        
+        <form class="form-inline">
+                <label>Nom du client :</label>
+                <input type="text" class="form-control" value="@ViewBag.nom" readonly>
+            
+        </form>
+    </div>
+    <div class="col col-sm-4">
+
+    </div>
+</div>
+
+<table id="Facture" style="text-align: center;" class="table table-light table-bordered">
+    <thead>
+        <tr>
+            <th>Numéro du produit</th>
+            <th>Design</th>
+            <th>Quatité</th>
+            <th>Prix Unitaire (Ar)</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numProduit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.qte)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pu)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.montant)
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <td class="border border-0"></td>
+            <td></td>
+            <td></td>
+            <td>
+                TOTAL
+            </td>
+
+            <td>
+                @Model.Sum(m => m.montant) Ar
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>ARRETE LA SOMME DE : <span class="text-info"> @ViewBag.lettre </span></p>
+

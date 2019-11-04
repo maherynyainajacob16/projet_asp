@@ -1,0 +1,43 @@
+﻿@model ProjetAsp.Models.Produit
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Desing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NumProduit }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

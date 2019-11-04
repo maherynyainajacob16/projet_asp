@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProjetAsp.Models.Commande>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste des commandes</h2>
+
+<p>
+    @Html.ActionLink("Créer un nouvel commande", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Numero des Clients
+        </th>
+        <th>
+            Numero des produits
+        </th>
+            
+        <th>
+            Quantité
+        </th>
+        <th>
+            Date du commande
+        </th>
+        <th> ACTIONS</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumProduit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCommande)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdCommande }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdCommande }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdCommande })
+        </td>
+    </tr>
+}
+
+</table>

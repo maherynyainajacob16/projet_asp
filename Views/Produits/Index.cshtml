@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProjetAsp.Models.Produit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste des produits</h2>
+
+<p>
+    @Html.ActionLink("Ajouter un nouveau produit", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Numero du produit
+        </th>
+        <th>
+            Designation du produit
+        </th>
+        <th>
+            Prix d'un produit
+        </th>
+        <th>
+            Stock du produit
+        </th>
+        <th> ACTIONS</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumProduit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.NumProduit}) |
+            @Html.ActionLink("Details", "Details", new {id = item.NumProduit}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.NumProduit})
+        </td>
+    </tr>
+}
+
+</table>

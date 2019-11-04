@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataCommModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="NumClient" />
+    </Key>
+    <Property Name="NumClient" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NomClient" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="IdCommande" />
+    </Key>
+    <Property Name="NumClient" Type="nvarchar" MaxLength="50" />
+    <Property Name="NumProduit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qte" Type="int" />
+    <Property Name="DateCommande" Type="date" />
+    <Property Name="IdCommande" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produit">
+    <Key>
+      <PropertyRef Name="NumProduit" />
+    </Key>
+    <Property Name="NumProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Desing" Type="nvarchar" MaxLength="50" />
+    <Property Name="PU" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="stock" Type="int" />
+  </EntityType>
+  <EntityContainer Name="DataCommModelStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

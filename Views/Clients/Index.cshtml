@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ProjetAsp.Models.Client>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste des clients</h2>
+
+<p>
+    @Html.ActionLink("Ajouter un nouvel client", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Numéro des clients</th>
+        <th>Nom des clients</th>
+        <th>ACTIONS</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.NumClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomClient)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.NumClient}) |
+            @Html.ActionLink("Details", "Details", new {id = item.NumClient}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.NumClient})
+        </td>
+    </tr>
+}
+
+</table>

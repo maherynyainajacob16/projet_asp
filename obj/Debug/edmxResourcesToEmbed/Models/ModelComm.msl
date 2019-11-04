@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataCommModelStoreContainer" CdmEntityContainer="DataCommEntities4">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="DataCommModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+          <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Commande">
+      <EntityTypeMapping TypeName="DataCommModel.Commande">
+        <MappingFragment StoreEntitySet="Commande">
+          <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+          <ScalarProperty Name="NumProduit" ColumnName="NumProduit" />
+          <ScalarProperty Name="Qte" ColumnName="Qte" />
+          <ScalarProperty Name="DateCommande" ColumnName="DateCommande" />
+          <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produit">
+      <EntityTypeMapping TypeName="DataCommModel.Produit">
+        <MappingFragment StoreEntitySet="Produit">
+          <ScalarProperty Name="NumProduit" ColumnName="NumProduit" />
+          <ScalarProperty Name="Desing" ColumnName="Desing" />
+          <ScalarProperty Name="PU" ColumnName="PU" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

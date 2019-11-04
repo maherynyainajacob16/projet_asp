@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProjetAsp.Models.Commande>
+
+@{
+    ViewBag.Title = "liste_commande";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>liste_commande</h2>
+
+@using (Html.BeginForm(new { @class = "form-horizontal", role = "form" }))
+{
+
+    <label>Date Entre:</label>@Html.TextBox("date1")
+    <label>et </label>@Html.TextBox("date2")
+    <button type="submit" class="btn btn-secondary"> Search</button>
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCommande)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumProduit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCommande)
+        </td>
+    </tr>
+}
+
+</table>

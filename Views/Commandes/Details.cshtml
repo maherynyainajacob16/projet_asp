@@ -1,0 +1,51 @@
+﻿@model ProjetAsp.Models.Commande
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Commande</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCommande)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCommande)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCommande }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
